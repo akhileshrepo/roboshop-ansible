@@ -1,0 +1,26 @@
+- name: Install Erlang Repos
+  ansible.builtin.shell: 
+  
+- name: Install rabbitMQ repos
+  ansible.builtin.shell: 
+  
+- name: Install rabbitMQ server
+  ansible.builtin.yum:
+    name: rabbitmq-server
+    state: installed
+
+- name: start rabbitMQ server
+  ansible.builtin.systemD:
+    name: rabbitmq-server
+    state: restarted
+    enabled: yes
+
+- name: Add application user
+  community.rabbitmq.rabbitmq_user:
+  user: roboshop
+  password: roboshop123
+  vhost: /
+  configure_priv: .*
+  read_priv: .*
+  write_priv: .*
+  state: present

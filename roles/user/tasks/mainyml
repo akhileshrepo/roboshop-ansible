@@ -1,0 +1,2 @@
+- name: nodejs setup
+  ansible.builtin.import_tasks: nodejs.yml
