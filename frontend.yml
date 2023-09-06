@@ -9,7 +9,7 @@
 
     - name: copy RoboShop configuration
       ansible.builtin.copy:
-        src: nginx-roboshop-conf
+        src: nginx-roboshop.conf
         dest: /etc/nginx/default.d/roboshop.conf
 
     - name: Clean old content
