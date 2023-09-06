@@ -1,13 +1,16 @@
-- name: Install python
+- name: install python
   ansible.builtin.yum:
-    name: python
+    name:
+      - python36
+      - gcc
+      - python3-devel
     state: installed
 
 - name: App pre-requisites
   ansible.builtin.import_tasks: app-preq.yml
 
-- name: download maven dependencies 
-  ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
+- name: download python dependencies 
+  ansible.builtin.shell: pip3.6 install -r requirement.txt
   args:
     chdir: /app
 
