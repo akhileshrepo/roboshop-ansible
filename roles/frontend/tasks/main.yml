@@ -24,7 +24,7 @@
     dest: /usr/share/nginx/html
     remote_src: yes
 
-- name: Start nginx
+- name: ReStart nginx
   ansible.builtin.systemd:
     name: nginx
     state: restarted
