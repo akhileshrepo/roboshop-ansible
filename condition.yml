@@ -1,6 +1,6 @@
 - name: demo on conditions
   hosts: all
-  connections: local
+  connection: local
   vars:
     fruit: true
     vegetable: false
