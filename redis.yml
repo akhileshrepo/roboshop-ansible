@@ -9,7 +9,7 @@
         disable_gpg_check: true
 
     - name: enable redis module
-      ansible.builtin.shell: yum enable redis:remi-6.2
+      ansible.builtin.shell: yum enable redis:remi-6.2 -y
 
     - name: install redis
       ansible.builtin.yum:
