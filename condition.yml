@@ -3,7 +3,7 @@
   connection: local
   vars:
     fruit: true
-    vegetable: false
+    vegetable: true
 
   tasks:
     - name: print fruit name
