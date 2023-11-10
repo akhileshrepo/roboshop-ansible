@@ -4,8 +4,8 @@
   tasks:
     - name: configure yum repo for MySQL
       ansible.builtin.copy:
-      src: mysql.repo
-      dest: /etc/yum.repos.d/mysql.repo
+        src: mysql.repo
+        dest: /etc/yum.repos.d/mysql.repo
 
     - name: Disable default mysql version
       ansible.builtin.shell: yum module disable mysql -y
