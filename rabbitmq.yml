@@ -9,7 +9,7 @@
 - name: Install rabbitmq server
   ansible.builtin.yum:
     name: rabbitmq-server
-    state: Installed
+    state: installed
 - name: start rabbitmq service
   ansible.builtin.systemd:
     name: rabbitmq-server
