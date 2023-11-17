@@ -2,28 +2,29 @@
   hosts: all
   become: true
   tasks:
-- name: Install Erlang Repos
-  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
-- name: Install Rabbitmq repos
-  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+    - name: Install Erlang Repos
+      ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
 
-- name: Install rabbitmq server
-  ansible.builtin.yum:
-    name: rabbitmq-server
-    state: installed
+    - name: Install RabbitMQ Repos
+      ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
 
-- name: Start RabbitMQ Service
-  ansible.builtin.systemd:
-    name: rabbitmq-server
-    state: restarted
-    enabled: yes
+    - name: Install RabbitMQ Server
+      ansible.builtin.yum:
+        name: rabbitmq-server
+        state: installed
 
-- name: Add application user
-  community.rabbitmq.rabbitmq_user:
-    user: roboshop
-    password: Roboshop123
-    vhost: /
-    config_priv: .*
-    read_priv: .*
-    write_priv: .*
-    state: present
+    - name: Start RabbitMQ Service
+      ansible.builtin.systemd:
+        name: rabbitmq-server
+        state: restarted
+        enabled: yes
+
+    - name: Add Application User
+      community.rabbitmq.rabbitmq_user:
+        user: roboshop
+        password: roboshop123
+        vhost: /
+        configure_priv: .*
+        read_priv: .*
+        write_priv: .*
+        state: present
