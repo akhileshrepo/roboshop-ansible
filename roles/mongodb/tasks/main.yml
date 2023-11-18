@@ -8,7 +8,7 @@
     name: mongodb-org
     state: installed
 
-- name: Update listen address in MOngoDB configuration
+- name: Update listen address in MongoDB configuration
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'

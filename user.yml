@@ -1,9 +1,0 @@
-- name: user setup
-  hosts: all
-  become: true
-  vars:
-    component: user
-    schema: true
-  tasks:
-    - name: NodejS setup
-      ansible.builtin.import_tasks: nodejs.yml

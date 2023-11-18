@@ -10,4 +10,4 @@
     state: installed
 
 - name: load schema
-  ansible.builtin.shell: mongo --host mongodb.akhildevops.online </app/schema/{{component}}.js
+  ansible.builtin.shell: mongo --host mongodb-dev.akhildevops.online </app/schema/{{component}}.js
