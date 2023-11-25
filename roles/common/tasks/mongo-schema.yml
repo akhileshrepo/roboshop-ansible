@@ -9,5 +9,10 @@
     name: mongodb-org-shell
     state: installed
 
+- name: Download DocumentDB pem file
+  ansible.builtin.get_url:
+    url:
+    dest:
+
 - name: load schema
   ansible.builtin.shell: mongo --host mongodb-dev.akhildevops.online </app/schema/{{component}}.js
