@@ -11,4 +11,4 @@
 
 
 - name: Load Schema
-  ansible.builtin.shell:  mongo --host MONGODB-SERVER-IPADDRESS </app/schema/{{component}}.js
+  ansible.builtin.shell:  mongo --host mongodb-dev.akhildevops.online </app/schema/{{component}}.js
