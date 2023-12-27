@@ -1,9 +1,4 @@
 
-
-func_systemd
-
-
-
 - name: copy MongoDB Yum repo file
   ansible.builtin.copy:
     src: mongo.repo
@@ -27,6 +22,7 @@ func_systemd
 
 - name: Schema setup
   ansible.builtin.import_tasks: mongo-schema.yml
+  when: schema is defined
 
 - name: systemD setup
   ansible.builtin.import_tasks: systemd-setup.yml
