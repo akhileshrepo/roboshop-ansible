@@ -1,5 +1,15 @@
 
-- name: Install NodeJs Repos
+
+func_systemd
+
+
+
+- name: copy MongoDB Yum repo file
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install nodejs repos
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
 - name: Install Nodejs
@@ -7,17 +17,18 @@
     name: nodejs
     state: installed
 
-- name: App pre-requisites
+- name: App pre requisite
   ansible.builtin.import_tasks: app-preq.yml
 
-- name: download nodejs dependencies 
+- name: Download Nodejs dependencies
   ansible.builtin.shell: npm install
   args:
     chdir: /app
 
-- name: schema setup
+- name: Schema setup
   ansible.builtin.import_tasks: mongo-schema.yml
 
-- name: systemD setup
-  ansible.builtin.import_tasks: systemd-setup.yml
+
+
+
 

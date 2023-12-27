@@ -3,12 +3,12 @@
   ansible.builtin.user:
     name: roboshop
 
-- name: Clean Old app content
+- name: clean old app content
   ansible.builtin.file:
     path: /app
     state: absent
 
-- name: Create App Directory
+- name: create App directory
   ansible.builtin.file:
     path: /app
     state: directory
@@ -18,3 +18,11 @@
     src: https://roboshop-artifacts.s3.amazonaws.com/{{component}}.zip
     dest: /app
     remote_src: yes
+
+
+
+
+
+
+
+
