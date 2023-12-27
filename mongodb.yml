@@ -1,8 +1,8 @@
-- name: ROboshop Mongodb
+- name: Roboshop Mongodb
   hosts: all
   become: true
   tasks:
-    - name: copy mongodb yum repo file
+    - name: copy MongoDB Yum repo file
       ansible.builtin.copy:
         src: mongo.repo
         dest: /etc/yum.repos.d/mongo.repo
@@ -18,8 +18,17 @@
         regexp: '127.0.0.1'
         replace: '0.0.0.0'
 
-    - name: start mongodb service
+    - name: Start MongoDB service
       ansible.builtin.systemd:
         name: mongod
         state: restarted
-        enabled: true
+        enabled: yes
+
+
+
+
+
+
+
+
+
