@@ -28,6 +28,8 @@ func_systemd
 - name: Schema setup
   ansible.builtin.import_tasks: mongo-schema.yml
 
+- name: systemD setup
+  ansible.builtin.import_tasks: systemd-setup.yml
 
 
 
