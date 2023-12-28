@@ -6,7 +6,7 @@
 - name: App pre-requisites
   ansible.builtin.import_tasks: app-preq.yml
 
-- name: download maven dependencies 
+- name: download maven dependencies
   ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
   args:
     chdir: /app

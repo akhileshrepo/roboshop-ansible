@@ -1,5 +1,0 @@
-- name: Set hostname
-  ansible.builtin.shell: set-hostname {{component}}
-
-- name: Install Node exporter
-  ansible.builtin.shell: labauto prometheus-node-exporter

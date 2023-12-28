@@ -6,12 +6,11 @@
   ansible.builtin.yum:
     name: nodejs
     state: installed
-    disable_gpg_check: true
 
 - name: App pre-requisites
   ansible.builtin.import_tasks: app-preq.yml
 
-- name: download nodejs dependencies 
+- name: download nodejs dependencies
   ansible.builtin.shell: npm install
   args:
     chdir: /app
