@@ -6,7 +6,7 @@
 
 - name: copy RoboShop configuration - Project config
   ansible.builtin.copy:
-    remote_src: nginx-roboshop.conf
+    src: nginx-roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
 - name: Copy RoboShop Configuration - Main Config
