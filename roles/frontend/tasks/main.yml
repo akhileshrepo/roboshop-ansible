@@ -5,13 +5,13 @@
     state: installed
 
 - name: copy RoboShop configuration - Project config
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: nginx-roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
 - name: Copy RoboShop Configuration - Main Config
   ansible.builtin.copy:
-    remote_src: nginx.conf
+    src: nginx.conf
     dest: /etc/nginx/nginx.conf
 
 - name: Clean old content
@@ -21,7 +21,7 @@
 
 - name: Create app directory
   ansible.builtin.file:
-    path: /usr/share/nginx/html/
+    path: /usr/share/nginx/html
     state: directory
 
 - name: Download and extract application content
