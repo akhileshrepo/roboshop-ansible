@@ -11,7 +11,7 @@
 
 - name: Copy RoboShop Configuration - Main Config
   ansible.builtin.copy:
-    src: nginx.conf
+    remote_src: nginx.conf
     dest: /etc/nginx/nginx.conf
 
 - name: Clean old content
