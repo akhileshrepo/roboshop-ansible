@@ -1,6 +1,6 @@
 
 - name: Install NodeJs Repos
-  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  ansible.builtin.shell: yum module disable nodejs -y ; yum module enable nodejs:18 -y
 
 - name: Install Nodejs
   ansible.builtin.yum:
