@@ -9,4 +9,4 @@
     state: installed
 
 - name: load schema
-  ansible.builtin.shell: mongo --host "{{ lookup('amazon.aws.aws_ssm', 'rds.dev.database_name', region='us-east-1') }}" </app/schema/{{component}}.js
+  ansible.builtin.shell: mongo --ssl --host dev-docdb-cluster.cluster-czhiylk864mf.us-east-1.docdb.amazonaws.com:27017 --sslCAFile global-bundle.pem --username docdbadmin --password roboshop1234 </app/schema/{{component}}.js
