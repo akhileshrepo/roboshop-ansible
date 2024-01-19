@@ -1,23 +1,24 @@
-- name: Set Hostname
-  ansible.builtin.shell: set-hostname frontend
-
 - name: Install Nginx
   ansible.builtin.yum:
     name: nginx
     state: installed
 
-- name: copy RoboShop configuration - Project config
+- name: Copy RoboShop Configuration - Project Config
   ansible.builtin.template:
     src: nginx-roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
+- name: Copy RoboShop Configuration - Main Config
+  ansible.builtin.copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
 
-- name: Clean old content
+- name: Clean Old content
   ansible.builtin.file:
-    path: /usr/share/nginx/html/
+    path: /usr/share/nginx/html
     state: absent
 
-- name: Create app directory
+- name: Create App Directory
   ansible.builtin.file:
     path: /usr/share/nginx/html
     state: directory
@@ -28,7 +29,7 @@
     dest: /usr/share/nginx/html
     remote_src: yes
 
-- name: ReStart nginx
+- name: Restart Nginx
   ansible.builtin.systemd:
     name: nginx
     state: restarted
