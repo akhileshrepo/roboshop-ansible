@@ -15,3 +15,6 @@
 
 - name: Load Schema
   ansible.builtin.shell:  mongo --ssl --host {{ lookup('amazon.aws.aws_ssm', 'docdb.{{env}}.endpoint', region='us-east-1') }}:27017 --sslCAFile /app/rds-combined-ca-bundle.pem --username docdbadmin --password roboshop1234 </app/schema/{{component}}.js
+
+
+  mongo --ssl --host dev-docdb-cluster.cluster-czhiylk864mf.us-east-1.docdb.amazonaws.com:27017 --sslCAFile global-bundle.pem --username docdbadmin --password <insertYourPassword>
