@@ -1,11 +1,10 @@
-
 - name: Install Nginx
   ansible.builtin.yum:
     name: nginx
     state: installed
 
-- name: copy RoboShop configuration
-  ansible.builtin.copy:
+- name: Copy RoboShop Configuration - Project Config
+  ansible.builtin.template:
     src: nginx-roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
