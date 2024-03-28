@@ -9,8 +9,8 @@ Environment=CART_PORT= {{ lookup('amazon.aws.aws_ssm', 'shipping.{{env}}.CART_PO
 Environment=USER_HOST= {{ lookup('amazon.aws.aws_ssm', 'shipping.{{env}}.USER_HOST', region='us-east-1') }}
 Environment=USER_PORT= {{ lookup('amazon.aws.aws_ssm', 'shipping.{{env}}.USER_PORT', region='us-east-1') }}
 Environment=AMQP_HOST= {{ lookup('amazon.aws.aws_ssm', 'shipping.{{env}}.AMQP_HOST', region='us-east-1') }}
-Environment=AMQP_USER= {{ lookup('amazon.aws.aws_ssm', 'shipping.{{env}}.AMQP_USER', region='us-east-1') }}
-Environment=AMQP_PASS=r {{ lookup('amazon.aws.aws_ssm', 'shipping.{{env}}.AMQP_PASS', region='us-east-1') }}
+Environment=AMQP_USER= {{ lookup('amazon.aws.aws_ssm', 'rabbitmq.{{env}}.AMQP_USER', region='us-east-1') }}
+Environment=AMQP_PASS=r {{ lookup('amazon.aws.aws_ssm', 'rabbitmq.{{env}}.AMQP_PASS', region='us-east-1') }}
 
 ExecStart=/usr/local/bin/uwsgi --ini payment.ini
 ExecStop=/bin/kill -9 $MAINPID
