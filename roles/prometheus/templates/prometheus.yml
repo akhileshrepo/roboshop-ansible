@@ -13,7 +13,8 @@ alerting:
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
-   - "alerts.yml"
+  - "alerts.yml"
+  # - "second_rules.yml"
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
@@ -26,13 +27,13 @@ scrape_configs:
           - name: "tag:Monitor"
             values: [ "yes" ]
     relabel_configs:
-      - source_labels: [ __meta_ec2_tag_Name ]
+      - source_labels: [__meta_ec2_tag_Name]
         target_label: name
-      - source_labels: [ __meta_ec2_tag_env ]
+      - source_labels: [__meta_ec2_tag_env]
         target_label: env
-      - source_labels: [ __meta_ec2_instance_type ]
+      - source_labels: [__meta_ec2_instance_type]
         target_label: instance_type
-      - source_labels: [ __meta_ec2_instance_state ]
+      - source_labels: [__meta_ec2_instance_state]
         target_label: instance_state
 
   - job_name: 'nginx'
@@ -43,11 +44,11 @@ scrape_configs:
           - name: "tag:Monitor_Nginx"
             values: [ "yes" ]
     relabel_configs:
-      - source_labels: [ __meta_ec2_tag_Name ]
+      - source_labels: [__meta_ec2_tag_Name]
         target_label: name
-      - source_labels: [ __meta_ec2_tag_env ]
+      - source_labels: [__meta_ec2_tag_env]
         target_label: env
-      - source_labels: [ __meta_ec2_instance_type ]
+      - source_labels: [__meta_ec2_instance_type]
         target_label: instance_type
-      - source_labels: [ __meta_ec2_instance_state ]
+      - source_labels: [__meta_ec2_instance_state]
         target_label: instance_state

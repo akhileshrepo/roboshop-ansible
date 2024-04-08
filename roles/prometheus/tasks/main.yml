@@ -3,7 +3,6 @@
     src: prometheus.yml
     dest: /opt/prometheus/prometheus.yml
 
-
 - name: Copy Alerts File
   ansible.builtin.template:
     src: alerts.yml
@@ -13,4 +12,3 @@
   ansible.builtin.systemd:
     name: prometheus
     state: restarted
-
