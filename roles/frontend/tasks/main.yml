@@ -4,7 +4,7 @@
     state: installed
 
 - name: Copy RoboShop Configuration - Project Config
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: nginx-roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
@@ -57,7 +57,7 @@
     state: restarted
     enabled: yes
 
-- name: Filebeat setup
+- name: Filebeat Setup
   ansible.builtin.import_role:
     name: elk
     tasks_from: filebeat
