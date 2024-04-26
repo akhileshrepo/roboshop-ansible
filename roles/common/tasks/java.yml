@@ -1,12 +1,17 @@
-- name: Install maven
+#- name: Install Maven
+#  ansible.builtin.yum:
+#    name: maven
+#    state: installed
+
+- name: Install Java
   ansible.builtin.yum:
-    name: maven
+    name: java-17-openjdk
     state: installed
 
-- name: App pre-requisites
+- name: App Pre-requisites
   ansible.builtin.import_tasks: app-preq.yml
 
-#- name: download maven dependencies
+#- name: Download Maven Dependencies
 #  ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
 #  args:
 #    chdir: /app

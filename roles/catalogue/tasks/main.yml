@@ -3,7 +3,7 @@
     name: common
     tasks_from: nodejs
 
-- name: Filebeat setup
+- name: Filebeat Setup
   ansible.builtin.import_role:
     name: elk
     tasks_from: filebeat
