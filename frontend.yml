@@ -10,7 +10,6 @@
       ansible.builtin.copy:
         src: nginx-roboshop.conf
         dest: /etc/nginx/default.d/roboshop.conf
-        remote_src: true
     - name: Clean old content
       ansible.builtin.file:
         path: /usr/share/nginx/html
