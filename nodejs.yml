@@ -7,8 +7,7 @@
     state: installed
 
 - name: App-prerequisite
-  ansible.builtin.import_tasks:
-    file: app-prerequisite.yml
+  ansible.builtin.import_tasks: app-prerequisite.yml
 
 - name: Install Dependencies
   ansible.builtin.shell: npm install
