@@ -1,8 +1,3 @@
-- name: copy catalogue service file
-  ansible.builtin.copy:
-    src: "{{component}}.service"
-    dest: /etc/systemd/system/{{component}}.service
-
 - name: adding user
   ansible.builtin.user:
     name: roboshop
