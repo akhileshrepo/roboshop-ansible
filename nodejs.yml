@@ -14,12 +14,10 @@
   ansible.builtin.shell: npm install
 
 - name: schema setup
-  ansible.builtin.import_tasks:
-    file: mongo-schema.yml
+  ansible.builtin.import_tasks: mongo-schema.yml
 
 - name: systemd setup
-  ansible.builtin.systemd:
-    file: systemd.yml
+  ansible.builtin.systemd: systemd.yml
 
 
 
