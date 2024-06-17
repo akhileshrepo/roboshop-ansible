@@ -9,8 +9,10 @@
 - name: App-prerequisite
   ansible.builtin.import_tasks: app-prerequisite.yml
 
-- name: Install Dependencies
+- name: Download NodeJS Dependencies
   ansible.builtin.shell: npm install
+  args:
+    chdir: /app
 
 - name: schema setup
   ansible.builtin.import_tasks: mongo-schema.yml
