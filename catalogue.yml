@@ -3,7 +3,6 @@
   become: true
   vars:
     component: catalogue
-
   tasks:
     - name: nodejs setup
       ansible.builtin.import_tasks:
