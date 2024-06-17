@@ -1,0 +1,24 @@
+- name: copy catalogue service file
+  ansible.builtin.copy:
+    src: "{{component}}.service"
+    dest: /etc/systemd/system/{{component}}.service
+
+- name: adding user
+  ansible.builtin.user:
+    name: roboshop
+
+- name: Clean old content
+  ansible.builtin.file:
+    path: /app
+    state: absent
+
+- name: Create app directory
+  ansible.builtin.file:
+    path: /app
+    state: directory
+
+- name: Download and extract app content
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/${{component}}.zip
+    dest: /app
+    remote_src: yes
