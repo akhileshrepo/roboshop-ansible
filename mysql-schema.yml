@@ -5,3 +5,4 @@
 
 - name: Load schema
   ansible.builtin.shell: mysql -h mysql-dev.akhildevops.online -uroot -pRoboshop@1 < /app/schema/{{component}}.sql
+  when: schema is defined
