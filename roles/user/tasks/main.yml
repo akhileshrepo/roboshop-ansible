@@ -1,2 +1,4 @@
 - name: Install Nodejs setup
-  ansible.builtin.import_tasks: nodejs.yml
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs
