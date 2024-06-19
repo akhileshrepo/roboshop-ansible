@@ -1,4 +1,4 @@
-- name: copy mysql  repo configuration
+- name: copy mysql repo configuration
   ansible.builtin.copy:
     src: mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
