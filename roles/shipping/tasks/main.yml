@@ -1,0 +1,2 @@
+- name: java setup
+  ansible.builtin.import_tasks: java.yml
