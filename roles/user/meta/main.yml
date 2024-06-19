@@ -1,2 +1,2 @@
-component=user
-schema=true
+dependencies:
+  - role: common
