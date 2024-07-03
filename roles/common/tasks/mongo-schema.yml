@@ -9,5 +9,5 @@
     state: installed
 
 - name: Load schema
-  ansible.builtin.shell: mongo --host mongodb-dev.akhildevops.online </app/schema/{{component}}.js
+  ansible.builtin.shell: <<URL from DOCDB >> </app/schema/{{component}}.js
   when: schema is defined
