@@ -35,3 +35,14 @@
     src: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v1.2.0/nginx-prometheus-exporter_1.2.0_linux_amd64.tar.gz
     dest: /opt/nginx_exporter
     remote_src: yes
+
+- name: Copy Nginx Prometheus Exporter Service
+  ansible.builtin.copy:
+    src: nginx-exporter.service
+    dest: /etc/systemd/system/nginx_exporter.service
+
+- name: Restart Nginx Prometheus Exporter Service
+  ansible.builtin.systemd:
+    name: nginx_exporter
+    state: restarted
+    enabled: yes
