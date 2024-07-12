@@ -18,11 +18,6 @@
     path: /usr/share/nginx/html
     state: directory
 
-- name: Restart Nginx
-  ansible.builtin.systemd:
-    name: nginx
-    state: restarted
-    enabled: yes
 
 - name: Create Nginx Prometheus Exporter Directory
   ansible.builtin.file:
@@ -43,5 +38,11 @@
 - name: Restart Nginx Prometheus Exporter Service
   ansible.builtin.systemd:
     name: nginx_exporter
+    state: restarted
+    enabled: yes
+
+- name: Restart Nginx
+  ansible.builtin.systemd:
+    name: nginx
     state: restarted
     enabled: yes
