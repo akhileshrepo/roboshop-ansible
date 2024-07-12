@@ -8,6 +8,11 @@
     src: nginx-roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
+- name: Copy RoboShop Configuration - Main Config
+  ansible.builtin.copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
 - name: Clean Old content
   ansible.builtin.file:
     path: /usr/share/nginx/html
@@ -18,6 +23,29 @@
     path: /usr/share/nginx/html
     state: directory
 
+#- name: Download and extract application content
+#  ansible.builtin.unarchive:
+#    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+#    dest: /usr/share/nginx/html
+#    remote_src: yes
+
+- name: Download and extract application content from Nexus
+  ansible.builtin.unarchive:
+    src: http://{{username}}:{{password}}@172.31.24.24:8081/repository/{{component}}/{{component}}-{{appVersion}}.zip
+    dest: /usr/share/nginx/html
+    remote_src: yes
+  vars:
+    username: "{{ lookup('amazon.aws.aws_ssm', 'nexus.{{env}}.username', region='us-east-1') }}"
+    password: "{{ lookup('amazon.aws.aws_ssm', 'nexus.{{env}}.password', region='us-east-1') }}"
+    appVersion: "{{ lookup('amazon.aws.aws_ssm', '{{component}}.{{env}}.appVersion', region='us-east-1') }}"
+
+
+
+- name: Restart Nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
 
 - name: Create Nginx Prometheus Exporter Directory
   ansible.builtin.file:
@@ -38,11 +66,5 @@
 - name: Restart Nginx Prometheus Exporter Service
   ansible.builtin.systemd:
     name: nginx_exporter
-    state: restarted
-    enabled: yes
-
-- name: Restart Nginx
-  ansible.builtin.systemd:
-    name: nginx
     state: restarted
     enabled: yes
