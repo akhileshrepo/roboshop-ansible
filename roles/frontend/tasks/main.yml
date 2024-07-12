@@ -23,11 +23,11 @@
     path: /usr/share/nginx/html
     state: directory
 
-#- name: Download and extract application content
-#  ansible.builtin.unarchive:
-#    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
-#    dest: /usr/share/nginx/html
-#    remote_src: yes
+- name: Download and extract application content
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+    dest: /usr/share/nginx/html
+    remote_src: yes
 
 #- name: Download and extract application content from Nexus
 #  ansible.builtin.unarchive:
