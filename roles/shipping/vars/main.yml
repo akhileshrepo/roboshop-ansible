@@ -1,2 +1,3 @@
 component: shipping
 schema: true
+env: dev
