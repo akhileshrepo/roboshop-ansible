@@ -1,3 +1,4 @@
 component: shipping
 schema: true
-env: dev
+log_type: raw
+log_file: /var/log/shipping.log
