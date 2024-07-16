@@ -1,5 +1,6 @@
-- name: Roboshop setup
+- name: RoboShop Setup
   hosts: all
   become: true
+  serial: 1
   roles:
     - "{{ component }}"
