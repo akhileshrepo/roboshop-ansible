@@ -35,6 +35,7 @@
     state: restarted
     enabled: yes
 
+
 - name: Create Nginx Prometheus Exporter Directory
   ansible.builtin.file:
     path: /opt/nginx_exporter
