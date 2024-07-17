@@ -32,29 +32,24 @@
     enabled: yes
 
 
-#- name: Create Nginx Prometheus Exporter Directory
-#  ansible.builtin.file:
-#    path: /opt/nginx_exporter
-#    state: directory
-#
-#- name: Download Nginx Prometheus Exporter
-#  ansible.builtin.unarchive:
-#    src: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.11.0/nginx-prometheus-exporter_0.11.0_linux_amd64.tar.gz
-#    dest: /opt/nginx_exporter
-#    remote_src: yes
-#
-#- name: Copy Nginx Prometheus Exporter Service
-#  ansible.builtin.copy:
-#    src: nginx-exporter.service
-#    dest: /etc/systemd/system/nginx_exporter.service
-#
-#- name: Restart Nginx Prometheus Exporter Service
-#  ansible.builtin.systemd:
-#    name: nginx_exporter
-#    state: restarted
-#    enabled: yes
-#
-#- name: Filebeat Setup
-#  ansible.builtin.import_role:
-#    name: elk
-#    tasks_from: filebeat
+- name: Create Nginx Prometheus Exporter Directory
+  ansible.builtin.file:
+    path: /opt/nginx_exporter
+    state: directory
+
+- name: Download Exporter
+  ansible.builtin.unarchive:
+    src: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v1.2.0/nginx-prometheus-exporter_1.2.0_linux_amd64.tar.gz
+    dest: /opt/nginx_exporter
+    remote_src: yes
+
+- name: Copy Nginx Prometheus Exporter Service
+  ansible.builtin.copy:
+    src: nginx-exporter.service
+    dest: /etc/systemd/system/nginx_exporter.service
+
+- name: Restart Nginx Prometheus Exporter Service
+  ansible.builtin.systemd:
+    name: nginx_exporter
+    state: restarted
+    enabled: yes
