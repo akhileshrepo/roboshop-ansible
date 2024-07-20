@@ -21,3 +21,7 @@
 - name: systemd setup
   ansible.builtin.import_tasks: systemd.yml
 
+- name: Filebeat Setup
+  ansible.builtin.import_role:
+    name: elk
+    tasks_from: filebeat
