@@ -1,4 +1,4 @@
-- name: Build {{component}} Service
+- name: Install Python
   ansible.builtin.yum:
     name:
       - python36
@@ -6,14 +6,14 @@
       - python3-devel
     state: installed
 
-- name: App pre-requisite
+- name: App Pre-requisites
   ansible.builtin.import_tasks: app-prerequisite.yml
 
-- name: Build {{component}} Service
+- name: Download Python Dependencies
   ansible.builtin.shell: pip3.6 install -r requirements.txt
   args:
     chdir: /app
 
-- name: Restart the {{component}} service
+- name: SystemD Setup
   ansible.builtin.import_tasks: systemd.yml
 
