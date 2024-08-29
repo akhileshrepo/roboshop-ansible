@@ -13,7 +13,6 @@
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
 
-
 - name: Clean Old content
   ansible.builtin.file:
     path: /usr/share/nginx/html
@@ -41,21 +40,21 @@
     appVersion: "{{ lookup('amazon.aws.aws_ssm', '{{component}}.{{env}}.appVersion', region='us-east-1') }}"
 
 
+
 - name: Restart Nginx
   ansible.builtin.systemd:
     name: nginx
     state: restarted
     enabled: yes
 
-
 - name: Create Nginx Prometheus Exporter Directory
   ansible.builtin.file:
     path: /opt/nginx_exporter
     state: directory
 
-- name: Download Exporter
+- name: Download Nginx Prometheus Exporter
   ansible.builtin.unarchive:
-    src: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v1.2.0/nginx-prometheus-exporter_1.2.0_linux_amd64.tar.gz
+    src: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.11.0/nginx-prometheus-exporter_0.11.0_linux_amd64.tar.gz
     dest: /opt/nginx_exporter
     remote_src: yes
 
